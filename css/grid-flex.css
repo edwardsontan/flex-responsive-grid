@@ -1,0 +1,150 @@
+/*
+
+# A Simple and Basic Responsive Grid Using CSS Flexible Box #
+
+June 2016  
+Edwardson Tan
+
+## Features ##
+* CSS Flexible Box is used instead of inline blocks and floats
+* All columns widths are specified as percentages
+* Multi-column layout automatically changes to a single column for small viewport devices and resized broswers on desktops
+* Stylesheet is coded in Sass with gutter margin defined as a single variable and is therefore adjustable to suit page/site requirements
+* Images wider than the columns they're contained in resize automatically to fit column width
+
+## Requirements ##
+[Sass](http://sass-lang.com/) compiler is necessary to create the CSS. (I use [Koala](http://koala-app.com/).)
+
+## Procedure ##
+Download normalize.css into css folder/directory. Compile scss file and import normalize.css and any other css files and then minify the combined css. [Koala](http://koala-app.com/) does the scss compilation, import of external files, and css minfication automatically when configured correctly.
+
+## Acknowledgement ##
+[Normalize.css](https://necolas.github.io/normalize.css/) is by Nicolas Gallagher and Jonathan Neal. Their stylesheet is provided on an [MIT License](https://opensource.org/licenses/MIT).
+
+## License ##
+[MIT License](https://opensource.org/licenses/MIT)
+
+*/
+@import url(et-init.css);
+/*! Responsive grid system using CSS flexbox */
+/* Change this gutter size as required. Must be specified as percentage. A value of zero removes gutters completely. Bear in mind that column width decreases as gutter width increases. */
+/* Change this padding for left and right sides of each column as required. Suggest it be specified as em. Because the border-box model is used, column widths do not change as padding values change. */
+/* It is necessary to use <div class='row'> to encapsulate elements with class='col-x' in order to switch on CSS flexbox*/
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap; }
+
+[class*="col-"] {
+  margin: 0 0.5%;
+  padding: 0 0em; }
+
+/* The col-x class specifies how wide the element will be, wherein width as percentage = (x/12)*100 - (gutter*2) */
+.col-1 {
+  -webkit-box-flex: 7.33333%;
+  -webkit-flex: 7.33333%;
+      -ms-flex: 7.33333%;
+          flex: 7.33333%; }
+
+.col-2 {
+  -webkit-box-flex: 15.66667%;
+  -webkit-flex: 15.66667%;
+      -ms-flex: 15.66667%;
+          flex: 15.66667%; }
+
+.col-3 {
+  -webkit-box-flex: 24%;
+  -webkit-flex: 24%;
+      -ms-flex: 24%;
+          flex: 24%; }
+
+.col-4 {
+  -webkit-box-flex: 32.33333%;
+  -webkit-flex: 32.33333%;
+      -ms-flex: 32.33333%;
+          flex: 32.33333%; }
+
+.col-5 {
+  -webkit-box-flex: 40.66667%;
+  -webkit-flex: 40.66667%;
+      -ms-flex: 40.66667%;
+          flex: 40.66667%; }
+
+.col-6 {
+  -webkit-box-flex: 49%;
+  -webkit-flex: 49%;
+      -ms-flex: 49%;
+          flex: 49%; }
+
+.col-7 {
+  -webkit-box-flex: 57.33333%;
+  -webkit-flex: 57.33333%;
+      -ms-flex: 57.33333%;
+          flex: 57.33333%; }
+
+.col-8 {
+  -webkit-box-flex: 65.66667%;
+  -webkit-flex: 65.66667%;
+      -ms-flex: 65.66667%;
+          flex: 65.66667%; }
+
+.col-9 {
+  -webkit-box-flex: 74%;
+  -webkit-flex: 74%;
+      -ms-flex: 74%;
+          flex: 74%; }
+
+.col-10 {
+  -webkit-box-flex: 82.33333%;
+  -webkit-flex: 82.33333%;
+      -ms-flex: 82.33333%;
+          flex: 82.33333%; }
+
+.col-11 {
+  -webkit-box-flex: 90.66667%;
+  -webkit-flex: 90.66667%;
+      -ms-flex: 90.66667%;
+          flex: 90.66667%; }
+
+.col-12 {
+  -webkit-box-flex: 99%;
+  -webkit-flex: 99%;
+      -ms-flex: 99%;
+          flex: 99%; }
+
+/* If there will be columns that will be empty then it is necessary to signify them by inserting <div class='col-x spacer'></div>. Without them CSS flexbox will automatically expand (grow) flexbox elements in order to fill up the entire width of the viewport regardless of flex-basis values. */
+.spacer {
+  visibility: hidden; }
+
+@media screen and (max-width: 640px) {
+  .row {
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap; }
+
+  [class*="col-"] {
+    -webkit-box-flex: 99%;
+    -webkit-flex: 99%;
+        -ms-flex: 99%;
+            flex: 99%; }
+
+  .spacer {
+    display: none; } }
+/* Temporary files for visual confirmation of the boundaries of each col-x
+Delete or comment out when testing is done */
+/* .col-1 {border: 2px dashed black}
+.col-2 {border: 2px dashed brown}
+.col-3 {border: 2px dashed red}
+.col-4 {border: 2px dashed orange}
+.col-5 {border: 2px dashed yellow}
+.col-6 {border: 2px dashed green}
+.col-7 {border: 2px dashed blue}
+.col-8 {border: 2px dashed violet}
+.col-9 {border: 2px dashed gray}
+.col-10 {border: 2px dashed lime}
+.col-11 {border: 2px dashed gold}
+.col-12 {border: 2px dashed silver} */
