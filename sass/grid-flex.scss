@@ -1,0 +1,56 @@
+@import url(et-init.css);
+
+/*! Responsive grid system using CSS flexbox */
+
+/* Change this gutter size as required. Must be specified as percentage. A value of zero removes gutters completely. Bear in mind that column width decreases as gutter width increases. */
+$gutter: 0.5%;
+
+/* Change this padding for left and right sides of each column as required. Suggest it be specified as em. Because the border-box model is used, column widths do not change as padding values change. */
+$padding: 0em;
+
+
+/* It is necessary to use <div class='row'> to encapsulate elements with class='col-x' in order to switch on CSS flexbox*/
+.row {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+[class*="col-"] {
+	margin: 0 $gutter; 
+	padding: 0 $padding;
+}
+
+/* The col-x class specifies how wide the element will be, wherein width as percentage = (x/12)*100 - (gutter*2) */
+.col-1 {flex: 1/12 * 100% - $gutter * 2}
+.col-2 {flex: 2/12 * 100% - $gutter * 2}
+.col-3 {flex: 3/12 * 100% - $gutter * 2}
+.col-4 {flex: 4/12 * 100% - $gutter * 2}
+.col-5 {flex: 5/12 * 100% - $gutter * 2}
+.col-6 {flex: 6/12 * 100% - $gutter * 2}
+.col-7 {flex: 7/12 * 100% - $gutter * 2}
+.col-8 {flex: 8/12 * 100% - $gutter * 2}
+.col-9 {flex: 9/12 * 100% - $gutter * 2}
+.col-10 {flex: 10/12 * 100% - $gutter * 2}
+.col-11 {flex: 11/12 * 100% - $gutter * 2}
+.col-12 {flex: 12/12 * 100% - $gutter * 2}
+
+
+/* If there will be columns that will be empty then it is necessary to signify them by inserting <div class='col-x spacer'></div>. Without them CSS flexbox will automatically expand (grow) flexbox elements in order to fill up the entire width of the viewport regardless of flex-basis values. */
+.spacer {
+	visibility: hidden;
+}
+
+
+@media screen and (max-width: 640px) {
+	.row {
+		flex-flow: row wrap
+	}
+
+	[class*="col-"] {
+		flex: 100% - $gutter * 2;
+	}
+	
+	.spacer {
+		display: none;
+	}	
+}
